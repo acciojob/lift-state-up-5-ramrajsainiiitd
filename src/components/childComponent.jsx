@@ -12,7 +12,7 @@ export default function ChildComponent(props) {
     setPassword(e.target.value);
   }
 
-  function handleClick(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     props.parentStateSetter(e.target.value);
   }
@@ -21,12 +21,12 @@ if (props.isLoggedIn == false) {
   return ( 
     <>
       <h2>Child Component</h2>
-        <form>
+        <form onSubmit={handleSubmit} value={true}>
         <label htmlFor="username">Username: </label>
-        <input type='text' id="username" value={userName} onChange={handleUserName} placeholder="Type Username" /><br/>
+        <input type='text' id="username" value={userName} onChange={handleUserName} placeholder="Type Username" required /><br/>
         <label htmlFor="password">Password: </label>
-        <input type='password' id="password" value={password} onChange={handlePassword} placeholder="Type Password"/><br/>
-        <button onClick={handleClick} value={true} >Login</button>
+        <input type='password' id="password" value={password} onChange={handlePassword} placeholder="Type Password" required/><br/>
+        <button >Login</button>
       </form>
     </>
   );
