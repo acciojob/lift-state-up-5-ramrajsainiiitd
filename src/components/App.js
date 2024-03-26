@@ -9,6 +9,7 @@ const App = () => {
   <ChildComponent isLoggedIn = {isLoggedIn} parentStateSetter = {setIsLoggedIn} />
   </>
  )
+ 
 }
 
 export default App;
