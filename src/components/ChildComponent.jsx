@@ -1,43 +1,33 @@
-import React, { useState } from 'react'; 
-
-export default function ChildComponent(props) {
-  const [userName, setUserName] = useState(''); 
-  const [password, setPassword] = useState(''); 
-
-  function handleUserName(e) {
-    setUserName(e.target.value);
-  }
-
-  function handlePassword(e) {
-    setPassword(e.target.value);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (userName.length !== 0 && password.length !== 0) {
-      props.parentStateSetter(true);
+import React, { useState } from 'react';
+const Login = ({onLogin}) => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+ 
+    const handleSubmit=(e)=>{
+     e.preventDefault();
+     if(username && password){
+     onLogin();
+     }else{
+     alert('Please enter username and password');
+     }
     }
-  }
-
-  if (!props.isLoggedIn) {
-    return ( 
-      <>
-        <h2>Parent Component</h2>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="username">Username: </label>
-          <input type='text' id="username" value={userName} onChange={handleUserName} placeholder="Type Username" required /><br/>
-          <label htmlFor="password">Password: </label>
-          <input type='password' id="password" value={password} onChange={handlePassword} placeholder="Type Password" required/><br/>
-          <button>Login</button>
+  return (
+    <div>
+        <form action="" onSubmit={handleSubmit}>
+            <label>
+                Username: <input type="text" value={username} onChange={(e)=>{
+                    setUsername(e.target.value)
+                }}/>
+            </label>
+            <br />
+            <label>
+                Password: <input type="password" value={password} onChange={(e)=>{
+                    setPassword(e.target.value)}} />
+            </label>
+            <br />
+            <button type="submit">Login</button>
         </form>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <h2>Parent Component</h2>
-        <p>You are logged in!</p>
-      </>
-    );
-  }
+    </div>
+  )
 }
+export default Login;

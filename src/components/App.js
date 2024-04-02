@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import './../styles/App.css';
-import ChildComponent from "./ChildComponent";
-
+import ParentComponent from "./ParentComponent";
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
- return (
-  <>
-  <ChildComponent isLoggedIn = {isLoggedIn} parentStateSetter = {setIsLoggedIn} />
-  </>
- )
- 
+  return (
+    <div>
+       <ParentComponent/>
+    </div>
+  )
 }
-
-export default App;
+export default App
