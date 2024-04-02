@@ -14,30 +14,30 @@ export default function ChildComponent(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.parentStateSetter(e.target.value);
+    if (userName.length !== 0 && password.length !== 0) {
+      props.parentStateSetter(true);
+    }
   }
 
-if (props.isLoggedIn == false) {
-  return ( 
-    <>
-      <h2>Parent Component</h2>
-        <form onSubmit={handleSubmit} value={true}>
-        <label htmlFor="username">Username: </label>
-        <input type='text' id="username" value={userName} onChange={handleUserName} placeholder="Type Username" required /><br/>
-        <label htmlFor="password">Password: </label>
-        <input type='password' id="password" value={password} onChange={handlePassword} placeholder="Type Password" required/><br/>
-        <button >Login</button>
-      </form>
-    </>
-  );
-}
-else{
-  return (
-<>
-<h2>Parent Component</h2>
-<p>You are logged in!</p>
-</>
-  )
-}
-
+  if (!props.isLoggedIn) {
+    return ( 
+      <>
+        <h2>Parent Component</h2>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="username">Username: </label>
+          <input type='text' id="username" value={userName} onChange={handleUserName} placeholder="Type Username" required /><br/>
+          <label htmlFor="password">Password: </label>
+          <input type='password' id="password" value={password} onChange={handlePassword} placeholder="Type Password" required/><br/>
+          <button>Login</button>
+        </form>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <h2>Parent Component</h2>
+        <p>You are logged in!</p>
+      </>
+    );
+  }
 }
