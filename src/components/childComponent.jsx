@@ -20,7 +20,7 @@ export default function ChildComponent(props) {
 if (props.isLoggedIn == false) {
   return ( 
     <>
-      <h2>Child Component</h2>
+      <h2>Parent Component</h2>
         <form onSubmit={handleSubmit} value={true}>
         <label htmlFor="username">Username: </label>
         <input type='text' id="username" value={userName} onChange={handleUserName} placeholder="Type Username" required /><br/>
@@ -34,7 +34,7 @@ if (props.isLoggedIn == false) {
 else{
   return (
 <>
-<h2>Child Component</h2>
+<h2>Parent Component</h2>
 <p>You are logged in!</p>
 </>
   )
